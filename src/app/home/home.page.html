@@ -1,20 +1,70 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+        Metric to Imperial
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title>Metric to Imperial </ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+
+    <div id="container" class="container">
+
+        <ion-item>
+            <ion-label>Convert</ion-label>
+            <ion-select [(ngModel)]="semSelected" (ngModelChange)="getConversion($event)">
+                <ion-select-option value="distance">Distance</ion-select-option>
+                <ion-select-option value="weight">Weight</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+
+        <div *ngIf="distance">
+             <h3> Convert Distance </h3>
+
+            <ion-item>
+                <ion-label primary floating>Miles:</ion-label>
+                <ion-input type="number" [(ngModel)]="insert_miles" (ionChange)='onChangeMiles($event.target.value)'></ion-input>
+            </ion-item>
+
+
+            <ion-item class=" km_answer ">
+                <ion-label primary floating>Kilometers:</ion-label>
+                <ion-input readonly  value="{{ km_answer }}"></ion-input>
+            </ion-item>
+
+        </div>
+
+        <div *ngIf="weight">
+            <h3> Convert Weight </h3>
+
+            <ion-item>
+                <ion-label primary floating>Pounds:</ion-label>
+                <ion-input type="number" [(ngModel)]="insert_pound" (ionChange)='onChangePound($event.target.value)'></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label primary floating>Ton:</ion-label>
+                <ion-input type="number" [(ngModel)]="insert_ton" (ionChange)='onChangeTon($event.target.value)'></ion-input>
+            </ion-item>
+
+
+            <ion-item class=" kilo_answer ">
+                <ion-label primary floating>Kilograms:</ion-label>
+                <ion-input readonly  value="{{ kilo_answer }}"></ion-input>
+            </ion-item>
+        </div>
+
+    </div>
+
+
 </ion-content>
